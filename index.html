@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réponse et Indices</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .inputs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        #finalHint {
+            display: none;
+            margin-top: 20px;
+            color: green;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 150px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inputs">
+            <div>
+                <label for="response1">Réponse 1 :</label><br>
+                <input type="text" id="response1" placeholder="Votre réponse">
+            </div>
+            <div>
+                <label for="response2">Réponse 2 :</label><br>
+                <input type="text" id="response2" placeholder="Votre réponse">
+            </div>
+        </div>
+        <button onclick="checkResponses()">Valider</button>
+        <div id="finalHint">15</div>
+    </div>
+
+    <script>
+        const correctAnswers1 = ["bambi"]; // Remplacez par les réponses correctes pour Réponse 1
+        const correctAnswers2 = ["raiponse"]; // Remplacez par les réponses correctes pour Réponse 2
+
+        function checkResponses() {
+            const userResponse1 = document.getElementById('response1').value.trim().toLowerCase();
+            const userResponse2 = document.getElementById('response2').value.trim().toLowerCase();
+            const finalHint = document.getElementById('finalHint');
+
+            let hintContent = "";
+
+            // Vérification de Réponse 1
+            if (correctAnswers1.includes(userResponse1)) {
+                hintContent += "15";
+            }
+
+            // Vérification de Réponse 2
+            if (correctAnswers2.includes(userResponse2)) {
+                hintContent += hintContent ? "h30" : "30";
+            }
+
+            // Mise à jour de l'indice final
+            if (hintContent) {
+                finalHint.style.display = 'block';
+                finalHint.textContent = hintContent;
+            } else {
+                finalHint.style.display = 'none';
+                alert("Aucune des réponses n'est correcte, essayez encore !");
+            }
+        }
+    </script>
+</body>
+</html>
